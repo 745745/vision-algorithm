@@ -1,5 +1,6 @@
 from utility import *
 
+from imageTovideo import *
 import matplotlib.pyplot as plt
 
 
@@ -7,6 +8,7 @@ import matplotlib.pyplot as plt
 
 
 def main():
+    '''''
     I,K,D=readData()
     poses=np.loadtxt("../data/poses.txt")
     RT=buildMatrix(poses[0])
@@ -16,7 +18,9 @@ def main():
     plt.plot(x,y,'r+')
     plt.show()
 
-
+    makevideo("../data/images")
+    playvideo()
+'''''
 
 
 
