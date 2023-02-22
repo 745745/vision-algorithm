@@ -1,21 +1,25 @@
 import PIL.ImageShow
 from PIL import Image
 import numpy as np
+import os
+import cv2
 
 
-
-def readFrame(path):
-    I = Image.open(path)
-    return np.array(I)
 
 def readParam(path):
     return np.loadtxt(path, dtype=np.float32, delimiter=' ')
 
-def readData():
-    I = readFrame("../data/images_undistorted/img_0001.jpg")
+def readData(imagePath):
+    image=[]
+    imageList = os.listdir(imagePath)
+    imageList.sort()
+    for item in imageList:
+        if item.endswith('.jpg'):
+            item = imagePath + '/' + item
+            image.append(cv2.imread(item))
     K=readParam("../data/K.txt")
     D=readParam("../data/D.txt")
-    return I,K,D
+    return image,K,D
 
 def buildMatrix(pose):
     w=np.array(pose[:3])

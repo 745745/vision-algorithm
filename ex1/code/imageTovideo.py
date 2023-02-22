@@ -5,9 +5,8 @@ import cv2
 
 def makevideo(imagePath):
     fps=24
-    size = (752, 480)
+    size = (640, 480)
     video = cv2.VideoWriter("test.mp4", cv2.VideoWriter_fourcc(*'mp4v'), fps, size)
-
     imageList=os.listdir(imagePath)
     imageList.sort()
     for item in imageList:
